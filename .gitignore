@@ -1,0 +1,13 @@
+*.pyc
+*~
+.*.swp
+\#*#
+.DS_Store
+._*
+/MANIFEST
+/_build
+/build
+/dist
+/django_textblocks.egg-info
+/tests/venv
+.tox
