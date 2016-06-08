@@ -18,7 +18,10 @@ Usage
 =====
 
 1. Load templatetags ``{% load textblock_tags %}``
-2. Add ``texblock`` tags with unique identifiers and format
+2. Add ``textblock`` tags with unique identifiers and format
    (``text/plain`` or ``text/html``)::
 
       {% textblock "introduction" "text/plain" %}
+
+Text blocks with identifiers that do not exist in the database yet will
+automatically be created.
