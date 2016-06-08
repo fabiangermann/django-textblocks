@@ -29,7 +29,7 @@ setup(
     },
     install_requires=[
         'Django>=1.7.0',
-        'django-modeltranslation==0.8',
+        'django-modeltranslation>=0.8',
     ],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
