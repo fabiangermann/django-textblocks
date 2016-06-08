@@ -21,4 +21,4 @@ Usage
 2. Add ``texblock`` tags with unique identifiers and format
    (``text/plain`` or ``text/html``)::
 
-      ``{% textblock "introduction" "text/plain" %}``
+      {% textblock "introduction" "text/plain" %}
