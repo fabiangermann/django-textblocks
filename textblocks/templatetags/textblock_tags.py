@@ -23,5 +23,5 @@ def textblock(context, key, type):
     except TextBlock.DoesNotExist:
         textblock = TextBlock.objects.create(key=key, type=type)
 
-    cache.set(cache_key, textblock.content)
+    cache.set(cache_key, textblock.content, timeout=60)
     return textblock.content
