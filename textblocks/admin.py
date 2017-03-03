@@ -9,9 +9,10 @@ from .forms import TextBlockAdminForm
 
 class TextBlockAdmin(TranslationAdmin):
     list_display = ['key', 'type', 'shortened_content']
-    readonly_fields = ['type']
+    list_filter = ['key', ]
+    readonly_fields = ['key', 'type', ]
     form = TextBlockAdminForm
-    ordering = ['key']
+    ordering = ['key',]
 
     def shortened_content(self, instance):
         return instance.content[:100] + '...'

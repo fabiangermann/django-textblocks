@@ -8,7 +8,7 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def textblock(context, key, type, show_key='not_set'):
+def textblock(context, key, type='text/plain', show_key='not_set'):
     if type not in map(lambda x: x[0], TYPE_CHOICES):
         raise template.TemplateSyntaxError('Type does not exist')
 
