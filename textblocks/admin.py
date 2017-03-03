@@ -10,6 +10,7 @@ from .forms import TextBlockAdminForm
 class TextBlockAdmin(TranslationAdmin):
     list_display = ['key', 'type', 'shortened_content']
     list_filter = ['key', ]
+    fields = ['key', 'content', 'type', ]
     readonly_fields = ['key', 'type', ]
     form = TextBlockAdminForm
     ordering = ['key',]
