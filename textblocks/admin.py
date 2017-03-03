@@ -14,7 +14,7 @@ class TextBlockAdmin(TranslationAdmin):
     search_fields = ['key', 'content', ]
     readonly_fields = ['key', 'type', ]
     form = TextBlockAdminForm
-    ordering = ['key',]
+    ordering = ['key', ]
 
     def shortened_content(self, instance):
         return instance.content[:100] + '...'
