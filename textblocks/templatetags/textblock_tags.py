@@ -26,7 +26,7 @@ def textblock(context, key, type, show_key='not_set'):
 
     text = textblock.content
     if not text:
-        if not show_key == 'not_set' and show_key or \
+        if (not show_key == 'not_set' and show_key) or \
                 (show_key == 'not_set' and conf.TEXTBLOCKS_SHOWKEY == True):
             text = textblock.key
 
