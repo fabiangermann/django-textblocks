@@ -11,8 +11,8 @@ TYPE_CHOICES = (
 
 class TextBlock(models.Model):
     key = models.CharField(_('key'), max_length=50, db_index=True, unique=True)
-    type = models.CharField(_('type'), max_length=20, choices=TYPE_CHOICES, blank=True, default='')
-    content = models.TextField(_('content'))
+    type = models.CharField(_('type'), max_length=20, choices=TYPE_CHOICES)
+    content = models.TextField(_('content'), blank=True, default='')
 
     def __unicode__(self):
         return self.key
