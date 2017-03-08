@@ -1,6 +1,8 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
+import hashlib
+
 from django import template
 from django.core.cache import cache
 
@@ -16,7 +18,9 @@ def textblock(context, key, type='text/plain', show_key='not_set'):
         raise template.TemplateSyntaxError('Type does not exist')
 
     request = context['request']
-    cache_key = 'textblock_{0}_{1}'.format(key, request.LANGUAGE_CODE)
+    hash = hashlib.md5(key).hexdigest()
+    print hash
+    cache_key = 'textblock_{0}_{1}'.format(request.LANGUAGE_CODE, hash)
 
     text = cache.get(cache_key)
     if text:

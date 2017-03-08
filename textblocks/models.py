@@ -1,3 +1,5 @@
+import hashlib
+
 from django.conf import settings
 from django.core.cache import cache
 from django.db import models
@@ -26,6 +28,8 @@ class TextBlock(models.Model):
         super(TextBlock, self).delete(*args, **kwargs)
 
     def reset_cache(self):
+        hash = hashlib.md5(key).hexdigest()
+        print hash
         for lang in settings.LANGUAGES:
-            cache_key = u'textblock_{0}_{1}'.format(self.key, lang[0])
+            cache_key = u'textblock_{0}_{1}'.format(lang[0], hash)
             cache.delete(cache_key)
