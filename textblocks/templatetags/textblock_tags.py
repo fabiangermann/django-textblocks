@@ -19,11 +19,11 @@ def textblock(context, key, type='text/plain', show_key='not_set'):
 
     request = context['request']
     hash = hashlib.md5(key).hexdigest()
-    print hash
     cache_key = 'textblock_{0}_{1}'.format(request.LANGUAGE_CODE, hash)
 
     text = cache.get(cache_key)
     if text:
+        print "from cache: " + cache_key
         return text
 
     try:
