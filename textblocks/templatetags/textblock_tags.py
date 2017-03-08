@@ -38,4 +38,5 @@ def textblock(context, key, type='text/plain', show_key='not_set'):
             text = textblock.key
 
     cache.set(cache_key, text, timeout=60)
+    print "set cache: " + cache_key
     return text
