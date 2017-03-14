@@ -28,7 +28,7 @@ class TextBlock(models.Model):
         super(TextBlock, self).delete(*args, **kwargs)
 
     def reset_cache(self):
-        hash = hashlib.md5(self.key).hexdigest()
+        hash = hashlib.md5(self.key.encode('utf-8')).hexdigest()
         for lang in settings.LANGUAGES:
             cache_key = u'textblock_{0}_{1}'.format(lang[0], hash)
             cache.delete(cache_key)
