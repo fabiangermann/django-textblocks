@@ -25,7 +25,7 @@ def textblock(context, key, type='text/plain', show_key='not_set'):
     if not language_code:
         language_code = get_language()
 
-    hash = hashlib.md5(key).hexdigest()
+    hash = hashlib.md5(key.encode('utf-8')).hexdigest()
     cache_key = 'textblock_{0}_{1}'.format(language_code, hash)
 
     text = cache.get(cache_key)
