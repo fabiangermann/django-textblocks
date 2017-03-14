@@ -19,6 +19,7 @@ def textblock(context, key, type='text/plain', show_key='not_set'):
         raise template.TemplateSyntaxError('Type does not exist')
 
     request = context.get('request', None)
+    language_code = None
     if request:
         language_code = getattr(request, 'LANGUAGE_CODE', None)
     if not language_code:
