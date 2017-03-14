@@ -5,6 +5,7 @@ import hashlib
 
 from django import template
 from django.core.cache import cache
+from django.utils.translation import get_language
 
 from textblocks.models import TextBlock, TYPE_CHOICES
 from textblocks import conf
@@ -17,9 +18,14 @@ def textblock(context, key, type='text/plain', show_key='not_set'):
     if type not in map(lambda x: x[0], TYPE_CHOICES):
         raise template.TemplateSyntaxError('Type does not exist')
 
-    request = context['request']
+    request = context.get('request', None)
+    if request:
+        language_code = getattr(request, 'LANGUAGE_CODE', None)
+    if not language_code:
+        language_code = get_language()
+
     hash = hashlib.md5(key).hexdigest()
-    cache_key = 'textblock_{0}_{1}'.format(request.LANGUAGE_CODE, hash)
+    cache_key = 'textblock_{0}_{1}'.format(language_code, hash)
 
     text = cache.get(cache_key)
     if text:
