@@ -18,10 +18,21 @@ Usage
 =====
 
 1. Load templatetags ``{% load textblock_tags %}``
-2. Add ``textblock`` tags with unique identifiers and format
-   (``text/plain`` or ``text/html``)::
+2. Add ``textblock`` tags with unique identifiers::
 
-      {% textblock "introduction" "text/plain" %}
+      {% textblock "introduction" %}
 
 Text blocks with identifiers that do not exist in the database yet will
 automatically be created.
+
+You can optionally provide the following keyword arguments:
+
+============== ============================================================================================= =============================== ================
+   Argument                                             Description                                                  Possible Values             Default
+============== ============================================================================================= =============================== ================
+ ``type``       Sets the content type.                                                                        ``text/plain``, ``text/html``   ``text/plain``
+ ``show_key``   If set to true, the template will render the textblock key for textblocks without a value.    ``0``, ``1``                    ``0``
+============== ============================================================================================= =============================== ================
+
+The default value for the ``show-key``-option can be overriden with the
+``TEXTBLOCKS_SHOWKEY``-setting.
