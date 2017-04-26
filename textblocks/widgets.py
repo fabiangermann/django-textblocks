@@ -27,7 +27,8 @@ class CKEditorWidget(forms.Textarea):
         )
 
     def render(self, name, value, attrs={}):
-        attrs = self.build_attrs(attrs, name=name)
+        attrs.update({'name': name})
+        attrs = self.build_attrs(attrs)
         return mark_safe(
             '<p><textarea {attrs}>{value}</textarea></p>'
             '<script>CKEDITOR.replace("{id}", {config})</script>'
