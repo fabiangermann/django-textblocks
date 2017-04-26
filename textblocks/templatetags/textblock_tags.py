@@ -6,6 +6,7 @@ import hashlib
 from django import template
 from django.core.cache import cache
 from django.utils.translation import get_language
+from django.utils.safestring import mark_safe
 
 from textblocks.models import TextBlock, TYPE_CHOICES
 from textblocks import conf
@@ -43,5 +44,10 @@ def textblock(context, key, type='text/plain', show_key='not_set'):
                 (show_key == 'not_set' and conf.TEXTBLOCKS_SHOWKEY == True):
             text = textblock.key
 
+    # Prevent escaping if the type is set to 'text/html'
+    if textblock.type == 'text/html':
+        text = mark_safe(text)
+
     cache.set(cache_key, text, timeout=60)
+
     return text
