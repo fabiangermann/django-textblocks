@@ -13,18 +13,12 @@ from textblocks import conf
 register = template.Library()
 
 
-@register.simple_tag(takes_context=True)
-def textblock(context, key, type='text/plain', show_key='not_set'):
+@register.simple_tag()
+def textblock(key, type='text/plain', show_key='not_set'):
     if type not in map(lambda x: x[0], TYPE_CHOICES):
         raise template.TemplateSyntaxError('Type does not exist')
 
-    request = context.get('request', None)
-    language_code = None
-    if request:
-        language_code = getattr(request, 'LANGUAGE_CODE', None)
-    if not language_code:
-        language_code = get_language()
-
+    language_code = get_language()
     hash = hashlib.md5(key.encode('utf-8')).hexdigest()
     cache_key = 'textblock_{0}_{1}'.format(language_code, hash)
 
