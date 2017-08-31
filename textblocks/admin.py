@@ -18,7 +18,11 @@ class TextBlockAdmin(TranslationAdmin):
     ordering = ['key', ]
 
     def shortened_content(self, instance):
-        return instance.content[:100] + '...'
+        return (
+            instance.content[:100] + '...'
+            if len(instance.content) > 100
+            else instance.content
+        )
 
 
 admin.site.register(TextBlock, TextBlockAdmin)
