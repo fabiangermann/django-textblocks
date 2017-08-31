@@ -33,8 +33,7 @@ def textblock(key, type='text/plain', show_key='not_set'):
 
     text = textblock.content
     if not text:
-        if (not show_key == 'not_set' and show_key) or \
-                (show_key == 'not_set' and conf.TEXTBLOCKS_SHOWKEY == True):
+        if show_key != 'not_set' and (show_key or conf.TEXTBLOCKS_SHOWKEY):
             text = textblock.key
 
     cache.set(cache_key, text, timeout=60)
