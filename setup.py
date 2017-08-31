@@ -16,7 +16,9 @@ setup(
     author='Fabian Germann',
     author_email='fg@feinheit.ch',
     url='http://github.com/fabiangermann/django-textblocks/',
-    packages=find_packages(),
+    packages=find_packages(
+        exclude=['tests'],
+    ),
     include_package_data=True,
     install_requires=[
         # 'Django>=1.7.0',
