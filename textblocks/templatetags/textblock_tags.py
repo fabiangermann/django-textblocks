@@ -7,8 +7,9 @@ from django import template
 from django.core.cache import cache
 from django.utils.translation import get_language
 
-from textblocks.models import TextBlock, TYPE_CHOICES
 from textblocks import conf
+from textblocks.models import TYPE_CHOICES, TextBlock
+
 
 register = template.Library()
 

@@ -1,10 +1,11 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+
 from modeltranslation.admin import TranslationAdmin
 
-from .models import TextBlock
 from .forms import TextBlockAdminForm
+from .models import TextBlock
 
 
 class TextBlockAdmin(TranslationAdmin):
