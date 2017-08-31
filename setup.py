@@ -19,7 +19,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'Django>=1.7.0',
+        # 'Django>=1.7.0',
         'django-modeltranslation>=0.8',
     ],
     classifiers=[
