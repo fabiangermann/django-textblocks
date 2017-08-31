@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import hashlib
 
 from django.conf import settings
@@ -33,5 +35,5 @@ class TextBlock(models.Model):
     def reset_cache(self):
         hash = hashlib.md5(self.key.encode('utf-8')).hexdigest()
         for lang in settings.LANGUAGES:
-            cache_key = u'textblock_{0}_{1}'.format(lang[0], hash)
+            cache_key = 'textblock_{0}_{1}'.format(lang[0], hash)
             cache.delete(cache_key)
