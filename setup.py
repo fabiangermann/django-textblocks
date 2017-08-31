@@ -17,16 +17,7 @@ setup(
     author_email='fg@feinheit.ch',
     url='http://github.com/fabiangermann/django-textblocks/',
     packages=find_packages(),
-    package_data={
-        '': ['*.html', '*.txt'],
-        'textblocks': [
-            'locale/*/*/*.*',
-            'templates/*.*',
-            'templates/*/*.*',
-            'templates/*/*/*.*',
-            'templates/*/*/*/*.*',
-        ],
-    },
+    include_package_data=True,
     install_requires=[
         'Django>=1.7.0',
         'django-modeltranslation>=0.8',
