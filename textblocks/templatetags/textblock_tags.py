@@ -5,8 +5,8 @@ import hashlib
 
 from django import template
 from django.core.cache import cache
-from django.utils.translation import get_language
 from django.utils.safestring import mark_safe
+from django.utils.translation import get_language
 
 from textblocks import conf
 from textblocks.models import TYPE_CHOICES, TextBlock
