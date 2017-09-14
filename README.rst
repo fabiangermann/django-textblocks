@@ -2,6 +2,10 @@
 Textblocks
 ==========
 
+.. image:: https://travis-ci.org/fabiangermann/django-textblocks.svg?branch=master
+    :target: https://travis-ci.org/fabiangermann/django-textblocks
+
+
 Installation
 ============
 
