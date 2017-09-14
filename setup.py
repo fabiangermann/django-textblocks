@@ -10,7 +10,7 @@ def read(filename):
 
 setup(
     name='django-textblocks',
-    version='0.3',
+    version='0.4',
     description='',
     long_description=read('README.rst'),
     author='Fabian Germann',
