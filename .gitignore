@@ -12,3 +12,5 @@
 /django_textblocks.egg-info
 /tests/venv
 .tox
+.coverage
+htmlcov
