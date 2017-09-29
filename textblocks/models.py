@@ -8,6 +8,8 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from . import conf  # noqa so it sets defaults on django.conf.settings
+
 
 TYPE_CHOICES = (
     ('text/plain', _('text/plain')),
