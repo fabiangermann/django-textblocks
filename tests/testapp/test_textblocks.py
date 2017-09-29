@@ -92,7 +92,7 @@ class TextblocksTest(TestCase):
                     textblock('test1'),
                     'Just testing',
                 )
-
+            # cache hit!
             with self.assertNumQueries(0):
                 self.assertEqual(
                     textblock('test1'),
