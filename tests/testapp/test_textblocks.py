@@ -26,7 +26,7 @@ class TextblocksTest(TestCase):
         tb.content = 'Just testing'
         tb.save()
 
-        with self.assertNumQueries(1):
+        with self.assertNumQueries(2):
             self.assertEqual(
                 textblock('test1'),
                 'Just testing',
