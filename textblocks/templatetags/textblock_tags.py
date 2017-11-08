@@ -5,8 +5,9 @@ import hashlib
 
 from django import template
 from django.core.cache import cache
+from django.template.loader import TemplateDoesNotExist, render_to_string
 from django.utils import timezone
-from django.utils.safestring import mark_safe
+from django.utils.text import slugify
 from django.utils.translation import get_language
 
 from textblocks import conf
@@ -41,10 +42,14 @@ def textblock(key, type='text/plain', show_key='not_set'):
         if show_key != 'not_set' and (show_key or conf.SHOWKEY):
             text = textblock.key
 
-    # Prevent escaping if the type is set to 'text/html'
-    if textblock.type == 'text/html':
-        text = mark_safe(text)
+    # render
+    try:
+        rendered = render_to_string(
+            'textblocks/{}.html'.format(slugify(type)),
+            context={'text': text})
+    except TemplateDoesNotExist:
+        rendered = text
 
-    cache.set(cache_key, text, timeout=conf.CACHE_TIMEOUT)
+    cache.set(cache_key, rendered, timeout=conf.CACHE_TIMEOUT)
 
-    return text
+    return rendered
