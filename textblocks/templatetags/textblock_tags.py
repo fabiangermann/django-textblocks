@@ -10,7 +10,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 
 from textblocks import conf
-from textblocks.models import TYPE_CHOICES, TextBlock
+from textblocks.models import TextBlock
 
 
 register = template.Library()
@@ -18,7 +18,7 @@ register = template.Library()
 
 @register.simple_tag()
 def textblock(key, type='text/plain', show_key='not_set'):
-    if type not in map(lambda x: x[0], TYPE_CHOICES):
+    if type not in map(lambda x: x[0], conf.TYPE_CHOICES):
         raise template.TemplateSyntaxError('Type does not exist')
 
     language_code = get_language()

@@ -9,17 +9,14 @@ from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-
-TYPE_CHOICES = (
-    ('text/plain', _('text/plain')),
-    ('text/html', _('text/html'))
-)
+from textblocks import conf
 
 
 @python_2_unicode_compatible
 class TextBlock(models.Model):
     key = models.CharField(_('key'), max_length=50, db_index=True, unique=True)
-    type = models.CharField(_('type'), max_length=20, choices=TYPE_CHOICES)
+    type = models.CharField(
+        _('type'), max_length=20, choices=conf.TYPE_CHOICES)
     content = models.TextField(_('content'), blank=True, default='')
 
     created_at = models.DateTimeField(
