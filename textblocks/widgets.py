@@ -14,11 +14,7 @@ class CKEditorWidget(forms.Textarea):
         super(CKEditorWidget, self).__init__(*args, **kwargs)
 
     class Media:
-        js = (
-            getattr(settings,
-                    'TEXTBLOCKS_CKEDITORJS_URL',
-                    '/static/ckeditor/ckeditor.js'),
-        )
+        js = (conf.CKEDITORJS_URL,)
 
     def render(self, name, value, attrs={}):
         attrs.update({'name': name})
