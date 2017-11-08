@@ -42,6 +42,6 @@ def textblock(key, type='text/plain', show_key='not_set'):
     if textblock.type == 'text/html':
         text = mark_safe(text)
 
-    cache.set(cache_key, text, timeout=60)
+    cache.set(cache_key, text, timeout=conf.CACHE_TIMEOUT)
 
     return text
