@@ -61,14 +61,22 @@ class TextblocksTest(TestCase):
         tb = TextBlock.objects.get()
         # default: show key, with kwargs
         self.assertEqual(
-            textblock('test', show_key=True),
+            textblock('test', show_key="1"),
             'test',
         )
-        # with settings
+        # with settings, showkey enabled
         with self.settings(TEXTBLOCKS_SHOWKEY=True):
             self.assertEqual(
                 textblock('test'),
                 'test',
+            )
+            self.assertEqual(
+                textblock('test', show_key="True"),
+                'test',
+            )
+            self.assertEqual(
+                textblock('test', show_key=0),
+                '',
             )
         tb.delete()
 
