@@ -20,4 +20,6 @@ CKEDITOR_CONFIG = getattr(settings, 'TEXTBLOCKS_CKEDITOR_CONFIG', {
 CKEDITORJS_URL = getattr(
     settings, 'TEXTBLOCKS_CKEDITORJS_URL', '/static/ckeditor/ckeditor.js')
 
-TEXTBLOCKS_SHOWKEY = getattr(settings, 'TEXTBLOCKS_SHOWKEY', False)
+# Default value for the show_key keyword argument of the textblock
+# template tag
+SHOWKEY = getattr(settings, 'TEXTBLOCKS_SHOWKEY', False)

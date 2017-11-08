@@ -38,7 +38,7 @@ def textblock(key, type='text/plain', show_key='not_set'):
 
     text = textblock.content
     if not text:
-        if show_key != 'not_set' and (show_key or conf.TEXTBLOCKS_SHOWKEY):
+        if show_key != 'not_set' and (show_key or conf.SHOWKEY):
             text = textblock.key
 
     # Prevent escaping if the type is set to 'text/html'
