@@ -5,6 +5,7 @@ import hashlib
 
 from django import template
 from django.core.cache import cache
+from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 
@@ -30,6 +31,8 @@ def textblock(key, type='text/plain', show_key='not_set'):
 
     try:
         textblock = TextBlock.objects.get(key=key)
+        textblock.accessed_at = timezone.now()
+        textblock.save()
     except TextBlock.DoesNotExist:
         textblock = TextBlock.objects.create(key=key, type=type)
 

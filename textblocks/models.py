@@ -5,6 +5,7 @@ import hashlib
 from django.conf import settings
 from django.core.cache import cache
 from django.db import models
+from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -20,6 +21,11 @@ class TextBlock(models.Model):
     key = models.CharField(_('key'), max_length=50, db_index=True, unique=True)
     type = models.CharField(_('type'), max_length=20, choices=TYPE_CHOICES)
     content = models.TextField(_('content'), blank=True, default='')
+
+    created_at = models.DateTimeField(
+        _('created at'), default=timezone.now)
+    accessed_at = models.DateTimeField(
+        _('last access'), default=timezone.now)
 
     def __str__(self):
         return self.key

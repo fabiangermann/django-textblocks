@@ -14,13 +14,14 @@ else:
 
 
 class TextBlockAdmin(BaseAdmin):
-    list_display = ['key', 'type', 'shortened_content']
-    list_filter = ['type', ]
-    fields = ['key', 'content', 'type', ]
-    search_fields = ['key', 'content', ]
-    readonly_fields = ['key', 'type', ]
+    list_display = [
+        'key', 'type', 'shortened_content', 'accessed_at', 'created_at']
+    list_filter = ['type']
+    fields = ['key', 'content', 'type', 'created_at', 'accessed_at']
+    search_fields = ['key', 'content']
+    readonly_fields = ['key', 'type', 'created_at', 'accessed_at']
     form = TextBlockAdminForm
-    ordering = ['key', ]
+    ordering = ['key']
 
     def shortened_content(self, instance):
         return (
