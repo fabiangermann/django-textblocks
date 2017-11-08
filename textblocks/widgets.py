@@ -5,16 +5,10 @@ from django.conf import settings
 from django.forms.utils import flatatt
 from django.utils.safestring import mark_safe
 
+from textblocks import conf
+
 
 class CKEditorWidget(forms.Textarea):
-    DEFAULT_CONFIG = {
-        'toolbar': [
-            ['Maximize', 'Format', '-', 'Bold', 'Italic', 'Underline',
-             'Strike', '-', 'Subscript', 'Superscript', '-', 'NumberedList',
-             'BulletedList', '-', 'Anchor',  'Link', 'Unlink', '-', 'Source']
-        ],
-    }
-
     def __init__(self, *args, **kwargs):
         self.config = kwargs.pop('config', None)
         super(CKEditorWidget, self).__init__(*args, **kwargs)
@@ -36,6 +30,6 @@ class CKEditorWidget(forms.Textarea):
                 'attrs': flatatt(attrs),
                 'id': attrs['id'],
                 'value': value or '',
-                'config': json.dumps(self.config or self.DEFAULT_CONFIG)
+                'config': json.dumps(self.config or conf.CKEDITOR_CONFIG)
             })
         )
