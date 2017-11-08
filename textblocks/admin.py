@@ -1,14 +1,19 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.contrib import admin
-
-from modeltranslation.admin import TranslationAdmin
 
 from .forms import TextBlockAdminForm
 from .models import TextBlock
 
 
-class TextBlockAdmin(TranslationAdmin):
+if apps.is_installed('modeltranslation'):
+    from modeltranslation.admin import TranslationAdmin as BaseAdmin
+else:
+    BaseAdmin = admin.ModelAdmin
+
+
+class TextBlockAdmin(BaseAdmin):
     list_display = ['key', 'type', 'shortened_content']
     list_filter = ['type', ]
     fields = ['key', 'content', 'type', ]
