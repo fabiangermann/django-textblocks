@@ -78,6 +78,10 @@ class TextblocksTest(TestCase):
                 textblock('test', show_key=0),
                 '',
             )
+            self.assertEqual(
+                textblock('test', show_key=False),
+                '',
+            )
         tb.delete()
 
     def test_tag_caching(self):
