@@ -38,5 +38,5 @@ You can optionally provide the following keyword arguments:
  ``show_key``   If set to true, the template will render the textblock key for textblocks without a value.    ``0``, ``1``                    ``0``
 ============== ============================================================================================= =============================== ================
 
-The default value for the ``show-key``-option can be overriden with the
-``TEXTBLOCKS_SHOWKEY``-setting.
+The default value for the ``show_key``-option can be overriden with the
+``TEXTBLOCKS_SHOW_KEY``-setting.
