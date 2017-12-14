@@ -39,4 +39,4 @@ You can optionally provide the following keyword arguments:
 ============== ============================================================================================= =============================== ================
 
 The default value for the ``show_key``-option can be overriden with the
-``TEXTBLOCKS_SHOW_KEY``-setting.
+``TEXTBLOCKS_SHOWKEY = True``-setting.
