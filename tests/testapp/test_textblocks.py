@@ -1,6 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
-from importlib import reload
+try:
+    reload
+except NameError:
+    from importlib import reload
 
 from django.test import TestCase
 
