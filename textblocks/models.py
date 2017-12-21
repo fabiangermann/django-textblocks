@@ -9,7 +9,13 @@ from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from textblocks import conf
+from . import conf
+
+
+TYPE_CHOICES = (
+    ('text/plain', _('text/plain')),
+    ('text/html', _('text/html'))
+)
 
 
 @python_2_unicode_compatible
