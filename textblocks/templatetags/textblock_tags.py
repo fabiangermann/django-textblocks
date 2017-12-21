@@ -39,7 +39,10 @@ def textblock(key, type='text/plain', show_key='not_set'):
 
     text = textblock.content
     if not text:
-        if show_key != 'not_set' and (show_key or conf.SHOWKEY):
+        # if show_key or (show_key and settings.TEXTBLOCKS_SHOWKEY):
+        # if (show_key != 'not_set' and show_key) or \
+                # (show_key == 'not_set' and settings.TEXTBLOCKS_SHOWKEY):
+        if (show_key is True) or (show_key and conf.SHOWKEY):
             text = textblock.key
 
     # render
