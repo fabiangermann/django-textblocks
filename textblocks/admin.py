@@ -29,7 +29,11 @@ class TranslationStateFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if apps.is_installed('modeltranslation'):
-            langs = getattr(settings, 'MODELTRANSLATION_LANGUAGES', settings.LANGUAGES)
+            langs = getattr(
+                settings,
+                'MODELTRANSLATION_LANGUAGES',
+                settings.LANGUAGES
+            )
             lang_keys = [lang[0] for lang in langs]
             q_objects = Q()
             if self.value() == 'untranslated':
