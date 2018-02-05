@@ -18,7 +18,7 @@ register = template.Library()
 
 
 @register.simple_tag()
-def textblock(key, type='text/plain', show_key='not_set'):
+def textblock(key, type='text/plain', help_text='', show_key='not_set'):
     if type not in map(lambda x: x[0], conf.TYPE_CHOICES):
         raise template.TemplateSyntaxError('Type does not exist')
 
@@ -33,9 +33,13 @@ def textblock(key, type='text/plain', show_key='not_set'):
     try:
         textblock = TextBlock.objects.get(key=key)
         textblock.accessed_at = timezone.now()
+        if not textblock.help_text:
+            textblock.help_text = help_text
         textblock.save()
     except TextBlock.DoesNotExist:
-        textblock = TextBlock.objects.create(key=key, type=type)
+        textblock = TextBlock.objects.create(
+            key=key, type=type, help_text=help_text
+        )
 
     text = textblock.content
     if not text:

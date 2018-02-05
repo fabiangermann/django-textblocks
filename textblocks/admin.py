@@ -17,9 +17,13 @@ class TextBlockAdmin(BaseAdmin):
     list_display = [
         'key', 'type', 'shortened_content', 'accessed_at', 'created_at']
     list_filter = ['type']
-    fields = ['key', 'content', 'type', 'created_at', 'accessed_at']
-    search_fields = ['key', 'content']
-    readonly_fields = ['key', 'type', 'created_at', 'accessed_at']
+    fields = [
+        'key', 'help_text', 'content', 'type', 'created_at', 'accessed_at',
+    ]
+    search_fields = ['key', 'content', 'help_text', ]
+    readonly_fields = [
+        'key', 'help_text', 'type', 'created_at', 'accessed_at',
+    ]
     form = TextBlockAdminForm
     ordering = ['key']
 

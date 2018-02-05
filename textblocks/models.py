@@ -12,19 +12,13 @@ from django.utils.translation import ugettext_lazy as _
 from . import conf
 
 
-TYPE_CHOICES = (
-    ('text/plain', _('text/plain')),
-    ('text/html', _('text/html'))
-)
-
-
 @python_2_unicode_compatible
 class TextBlock(models.Model):
     key = models.CharField(_('key'), max_length=50, db_index=True, unique=True)
+    help_text = models.CharField(_('Help Text'), max_length=255, default='')
     type = models.CharField(
         _('type'), max_length=20, choices=conf.TYPE_CHOICES)
     content = models.TextField(_('content'), blank=True, default='')
-
     created_at = models.DateTimeField(
         _('created at'), default=timezone.now)
     accessed_at = models.DateTimeField(
