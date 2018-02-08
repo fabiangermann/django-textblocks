@@ -6,7 +6,7 @@ from .widgets import CKEditorWidget
 
 class TextBlockAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        if 'instance' in kwargs:
+        if kwargs.get('instance'):
             if kwargs['instance'].type == 'text/html':
                 for key, field in self.base_fields.items():
                     if isinstance(field.widget, AdminTextareaWidget):
