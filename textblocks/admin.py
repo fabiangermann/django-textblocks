@@ -30,5 +30,11 @@ class TextBlockAdmin(BaseAdmin):
             else instance.content
         )
 
+    def get_readonly_fields(self, request, obj=None):
+        fields = super(TextBlockAdmin, self).get_readonly_fields(request, obj)
+        if not obj:
+            fields = [f for f in fields if f not in ('key', 'type')]
+        return fields
+
 
 admin.site.register(TextBlock, TextBlockAdmin)
