@@ -3,12 +3,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.auth.models import User
 from django.urls import reverse
-
-try:
-    reload
-except NameError:
-    from importlib import reload
-
 from django.test import TestCase, Client
 
 from textblocks.models import TextBlock
