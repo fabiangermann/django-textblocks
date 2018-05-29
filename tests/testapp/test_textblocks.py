@@ -1,15 +1,16 @@
 from __future__ import absolute_import, unicode_literals
 
-try:
-    reload
-except NameError:
-    from importlib import reload
-
 from django.test import TestCase
 
 from textblocks import conf
 from textblocks.models import TextBlock
 from textblocks.templatetags.textblock_tags import textblock
+
+
+try:
+    reload
+except NameError:
+    from importlib import reload
 
 
 class TextblocksTest(TestCase):
