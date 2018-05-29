@@ -2,8 +2,8 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib.auth.models import User
+from django.test import Client, TestCase
 from django.urls import reverse
-from django.test import TestCase, Client
 
 from textblocks.models import TextBlock
 
