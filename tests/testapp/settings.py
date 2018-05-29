@@ -12,15 +12,26 @@ DATABASES = {
     }
 }
 
+ROOT_URLCONF = 'testapp.urls'
+
 INSTALLED_APPS = [
     'testapp',
     'textblocks',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.messages',
+    'django.contrib.sessions',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
 ]
 
-BASEDIR = os.path.dirname(__file__)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 SECRET_KEY = 'supersikret'
-# ROOT_URLCONF = 'testapp.urls'
+
 ALLOWED_HOSTS = ['*']
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -36,6 +47,17 @@ TEMPLATES = [
         },
     },
 ]
+
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+)
+
+MIDDLEWARE = MIDDLEWARE_CLASSES
 
 CACHES = {
     'default': {
