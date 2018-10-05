@@ -128,3 +128,18 @@ class TextblocksTest(TestCase):
                     textblock('test1'),
                     'Just testing',
                 )
+
+    def test_textblock_lazy(self):
+        from textblocks.utils import textblock_lazy
+
+        # a lazy textblock
+        with self.assertNumQueries(0):
+            lazy_block = textblock_lazy('key', show_key=True)
+        self.assertEqual(
+            '-{}-'.format(lazy_block),
+            '-key-',
+        )
+        self.assertEqual(
+            TextBlock.objects.count(),
+            1,
+        )
