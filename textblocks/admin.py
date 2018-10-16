@@ -2,8 +2,8 @@ from __future__ import unicode_literals
 
 from django.apps import apps
 from django.conf import settings
-from django.db.models import Q
 from django.contrib import admin
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 
 from .forms import TextBlockAdminForm
