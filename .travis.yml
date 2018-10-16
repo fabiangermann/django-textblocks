@@ -16,9 +16,9 @@ matrix:
     - env: REQ='https://github.com/django/django/archive/master.zip#egg=Django'
   exclude:
     - python: '2.7'
-      env: 'REQ>=2.0,<2.1'
+      env: REQ='Django>=2.0,<2.1'
     - python: '2.7'
-      env: 'REQ>=2.1,<2.2'
+      env: REQ='Django>=2.1,<2.2'
     - python: '2.7'
       env: REQ='https://github.com/django/django/archive/master.zip#egg=Django'
 install:
