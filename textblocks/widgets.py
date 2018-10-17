@@ -17,7 +17,7 @@ class CKEditorWidget(forms.Textarea):
     class Media:
         js = (conf.CKEDITORJS_URL,)
 
-    def render(self, name, value, attrs={}):
+    def render(self, name, value, attrs={}, renderer=None):
         attrs.update({'name': name})
         attrs = self.build_attrs(attrs)
         return mark_safe(
