@@ -23,6 +23,7 @@ setup(
     install_requires=[
         # 'Django>=1.7.0',
         'django-modeltranslation>=0.8',
+        'six',
     ],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
