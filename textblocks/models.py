@@ -1,18 +1,18 @@
 from __future__ import unicode_literals
 
 import hashlib
+import six
 
 from django.conf import settings
 from django.core.cache import cache
 from django.db import models
 from django.utils import timezone
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from . import conf
 
 
-@python_2_unicode_compatible
+@six.python_2_unicode_compatible
 class TextBlock(models.Model):
     key = models.CharField(
         _('key'), max_length=120, db_index=True, unique=True)
