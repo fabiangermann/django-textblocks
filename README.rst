@@ -36,7 +36,7 @@ You can optionally provide the following keyword arguments:
 ============== ============================================================================================= =================================== ================
  ``type``       Sets the content type.                                                                        ``text/plain``, ``text/html``       ``text/plain``
  ``show_key``   If set to true, the template will render the textblock key for textblocks without a value.    ``False``, ``0``, ``True``, ``1``   ``False``
-============== ============================================================================================= ==================================== ================
+============== ============================================================================================= =================================== ================
 
 The default value for the ``show_key``-option can be overriden with the
 ``TEXTBLOCKS_SHOWKEY = True``-setting.
