@@ -34,7 +34,8 @@ class TranslationStateFilter(admin.SimpleListFilter):
                 'MODELTRANSLATION_LANGUAGES',
                 settings.LANGUAGES
             )
-            lang_keys = [lang[0] for lang in langs]
+            # modeltranslation does replace "-" with "_" in language codes
+            lang_keys = [lang[0].replace('-', '_') for lang in langs]
             q_objects = Q()
             if self.value() == 'untranslated':
                 for lang_key in lang_keys:
