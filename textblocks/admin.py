@@ -94,5 +94,9 @@ class TextBlockAdmin(BaseAdmin):
             fields = [f for f in fields if f not in ('key', 'type')]
         return fields
 
+    def has_add_permission(self, request):
+        # Textblocks are never created through the admin interface
+        return False
+
 
 admin.site.register(TextBlock, TextBlockAdmin)
