@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
-import json
-
+from django.utils.encoding import force_str
 from django.utils.functional import Promise
 from django.core.serializers.json import DjangoJSONEncoder
 from django import forms
@@ -32,7 +31,6 @@ class CKEditorWidget(forms.Textarea):
     def render(self, name, value, attrs={}, renderer=None):
         attrs.update({'name': name})
         attrs = self.build_attrs(attrs)
-        print(conf.CKEDITOR_CONFIG)
         return mark_safe(
             '<p><textarea {attrs}>{value}</textarea></p>'
             '<script>CKEDITOR.replace("{id}", {config})</script>'
@@ -40,6 +38,6 @@ class CKEditorWidget(forms.Textarea):
                 'attrs': flatatt(attrs),
                 'id': attrs['id'],
                 'value': value or '',
-                'config': json.dumps(self.config or conf.CKEDITOR_CONFIG)
+                'config': json_encode(self.config or conf.CKEDITOR_CONFIG)
             })
         )
