@@ -1,10 +1,10 @@
 from __future__ import unicode_literals
 
+from django import forms
+from django.core.serializers.json import DjangoJSONEncoder
+from django.forms.utils import flatatt
 from django.utils.encoding import force_str
 from django.utils.functional import Promise
-from django.core.serializers.json import DjangoJSONEncoder
-from django import forms
-from django.forms.utils import flatatt
 from django.utils.safestring import mark_safe
 
 from textblocks import conf
