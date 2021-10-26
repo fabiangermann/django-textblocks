@@ -2,11 +2,23 @@ from __future__ import unicode_literals
 
 import json
 
+from django.utils.functional import Promise
+from django.core.serializers.json import DjangoJSONEncoder
 from django import forms
 from django.forms.utils import flatatt
 from django.utils.safestring import mark_safe
 
 from textblocks import conf
+
+
+class LazyEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Promise):
+            return force_str(obj)
+        return super().default(obj)
+
+
+json_encode = LazyEncoder().encode
 
 
 class CKEditorWidget(forms.Textarea):
@@ -20,6 +32,7 @@ class CKEditorWidget(forms.Textarea):
     def render(self, name, value, attrs={}, renderer=None):
         attrs.update({'name': name})
         attrs = self.build_attrs(attrs)
+        print(conf.CKEDITOR_CONFIG)
         return mark_safe(
             '<p><textarea {attrs}>{value}</textarea></p>'
             '<script>CKEDITOR.replace("{id}", {config})</script>'
