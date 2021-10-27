@@ -1,12 +1,23 @@
 from __future__ import unicode_literals
 
-import json
-
 from django import forms
+from django.core.serializers.json import DjangoJSONEncoder
 from django.forms.utils import flatatt
+from django.utils.encoding import force_str
+from django.utils.functional import Promise
 from django.utils.safestring import mark_safe
 
 from textblocks import conf
+
+
+class LazyEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Promise):
+            return force_str(obj)
+        return super().default(obj)
+
+
+json_encode = LazyEncoder().encode
 
 
 class CKEditorWidget(forms.Textarea):
@@ -27,6 +38,6 @@ class CKEditorWidget(forms.Textarea):
                 'attrs': flatatt(attrs),
                 'id': attrs['id'],
                 'value': value or '',
-                'config': json.dumps(self.config or conf.CKEDITOR_CONFIG)
+                'config': json_encode(self.config or conf.CKEDITOR_CONFIG)
             })
         )
