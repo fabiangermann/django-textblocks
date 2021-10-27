@@ -1,14 +1,14 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-import hashlib
-
 from django import template
 from django.core.cache import cache
 from django.template.loader import TemplateDoesNotExist, render_to_string
 from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import get_language
+
+import hashlib
 
 from textblocks import conf
 from textblocks.models import TextBlock

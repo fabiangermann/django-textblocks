@@ -1,14 +1,14 @@
 # encoding: utf-8
 from __future__ import absolute_import, unicode_literals
 
-import importlib
-
 from django.contrib.auth.models import User
 from django.test import Client, TestCase, override_settings
 from django.urls import reverse, reverse_lazy
 
-from textblocks.models import TextBlock
+import importlib
+
 from textblocks import conf
+from textblocks.models import TextBlock
 
 
 LAZY_CK_SETTINGS = conf.CKEDITOR_CONFIG.copy()

@@ -1,6 +1,6 @@
-import sys
-
 from django.utils.functional import lazy
+
+import sys
 
 from textblocks.templatetags.textblock_tags import textblock
 
